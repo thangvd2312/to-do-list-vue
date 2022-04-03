@@ -1,28 +1,53 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" width="25%">
-    <HelloWorld msg="Hello Vue in CodeSandbox!"/>
+    <Task :tasks="tasks" @update-tasks="updateTask" />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import Task from "./components/Task";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
-  }
+    Task,
+  },
+  data() {
+    return {
+      tasks: [
+        {
+          id: 1,
+          title: "Learn Vue JS",
+          completed: false,
+        },
+        {
+          id: 2,
+          title: "Watch netflix",
+          completed: false,
+        },
+        {
+          id: 3,
+          title: "Go shopping",
+          completed: false,
+        },
+        {
+          id: 4,
+          title: "Learn guitar",
+          completed: false,
+        },
+        {
+          id: 5,
+          title: "Send email",
+          completed: false,
+        },
+      ],
+    };
+  },
+  methods: {
+    updateTask(payload) {
+      this.tasks = payload;
+    },
+  },
 };
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
